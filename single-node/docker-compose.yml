@@ -18,14 +18,14 @@ services:
       - "55000:55000"
     environment:
       - INDEXER_URL=https://wazuh.indexer:9200
-      - INDEXER_USERNAME=admin
-      - INDEXER_PASSWORD=Laboratorio2026!Wazuh
+      - INDEXER_USERNAME=${INDEXER_USERNAME}
+      - INDEXER_PASSWORD=${INDEXER_PASSWORD}
       - FILEBEAT_SSL_VERIFICATION_MODE=full
       - SSL_CERTIFICATE_AUTHORITIES=/etc/ssl/root-ca.pem
       - SSL_CERTIFICATE=/etc/ssl/filebeat.pem
       - SSL_KEY=/etc/ssl/filebeat.key
-      - API_USERNAME=wazuh-wui
-      - API_PASSWORD=Laboratorio2026!Wui
+      - API_USERNAME=${API_USERNAME}
+      - API_PASSWORD=${API_PASSWORD}
     volumes:
       - wazuh_api_configuration:/var/ossec/api/configuration
       - wazuh_etc:/var/ossec/etc
@@ -75,13 +75,13 @@ services:
     ports:
       - 443:5601
     environment:
-      - INDEXER_USERNAME=admin
-      - INDEXER_PASSWORD=Laboratorio2026!Wazuh
+      - INDEXER_USERNAME=${INDEXER_USERNAME}
+      - INDEXER_PASSWORD=${INDEXER_PASSWORD}
       - WAZUH_API_URL=https://wazuh.manager
-      - DASHBOARD_USERNAME=kibanaserver
-      - DASHBOARD_PASSWORD=Laboratorio2026!Wui
-      - API_USERNAME=wazuh-wui
-      - API_PASSWORD=Laboratorio2026!Wui
+      - DASHBOARD_USERNAME=${DASHBOARD_USERNAME}
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD}
+      - API_USERNAME=${API_USERNAME}
+      - API_PASSWORD=${API_PASSWORD}
     volumes:
       - ./config/wazuh_indexer_ssl_certs/wazuh.dashboard.pem:/usr/share/wazuh-dashboard/certs/wazuh-dashboard.pem
       - ./config/wazuh_indexer_ssl_certs/wazuh.dashboard-key.pem:/usr/share/wazuh-dashboard/certs/wazuh-dashboard-key.pem
